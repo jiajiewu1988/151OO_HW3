@@ -9,6 +9,7 @@ import java.util.*;
 /**
   A class that implements an Observer object that displays a barchart view of
   a data model.
+  @author Text Book Answer
 */
 public class BarFrame extends JFrame implements ChangeListener
 {

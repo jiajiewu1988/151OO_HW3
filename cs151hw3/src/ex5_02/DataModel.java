@@ -5,6 +5,7 @@ import javax.swing.event.*;
 
 /**
   A Subject class for the observer pattern.
+  @author Text Book Answer
 */
 public class DataModel
 {

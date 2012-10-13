@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 /**
   A class for displaying the model as a column of textfields in a frame.
+  @author Text Book Answer
 */
 public class TextFrame extends JFrame
 {

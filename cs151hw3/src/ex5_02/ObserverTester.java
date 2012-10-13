@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
    A class for testing an implementation of the Observer pattern.
+   @author Text Book Answer
 */
 public class ObserverTester
 {
