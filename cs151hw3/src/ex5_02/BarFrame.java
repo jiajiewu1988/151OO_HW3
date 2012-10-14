@@ -1,6 +1,8 @@
 package ex5_02;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -11,8 +13,15 @@ import java.util.*;
   a data model.
   @author Text Book Answer
 */
-public class BarFrame extends JFrame implements ChangeListener
+public class BarFrame extends JFrame implements ChangeListener, MouseListener
 {
+	private ArrayList<Double> a;
+    private DataModel dataModel;
+    private double maxValue;
+
+	private static final int ICON_WIDTH = 200;
+	private static final int ICON_HEIGHT = 200;
+	
    /**
       Constructs a BarFrame object
       @param dataModel the data that is displayed in the barchart
@@ -21,6 +30,7 @@ public class BarFrame extends JFrame implements ChangeListener
    {
       this.dataModel = dataModel;
       a = dataModel.getData();
+      maxValue = 0;
 
       setLocation(0,200);
       setLayout(new BorderLayout());
@@ -41,6 +51,7 @@ public class BarFrame extends JFrame implements ChangeListener
                double val = v.doubleValue();
                if (val > max)
                   max = val;
+               	  maxValue = max;
             }
 
             double barHeight = getIconHeight() / a.size();
@@ -61,6 +72,7 @@ public class BarFrame extends JFrame implements ChangeListener
       };
 
       add(new JLabel(barIcon));
+      addMouseListener(this);
 
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       pack();
@@ -76,10 +88,38 @@ public class BarFrame extends JFrame implements ChangeListener
       a = dataModel.getData();
       repaint();
    }
-
-   private ArrayList<Double> a;
-   private DataModel dataModel;
-
-   private static final int ICON_WIDTH = 200;
-   private static final int ICON_HEIGHT = 200;
+   
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		System.out.println("The position is" + e.getX());
+		System.out.println(e.getY());
+		int location = (e.getY() - 30) / (ICON_HEIGHT / a.size());
+		double value = maxValue * ((double) e.getX() / ICON_WIDTH);
+		System.out.println("location is ->" + location + "   value is->" + value);
+		dataModel.update(location, value);
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -3,13 +3,16 @@ package ex5_02;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import java.util.ArrayList;
 
 /**
   A class for displaying the model as a column of textfields in a frame.
   @author Text Book Answer
 */
-public class TextFrame extends JFrame
+public class TextFrame extends JFrame implements ChangeListener
 {
    /**
       Constructs a JFrame that contains the textfields containing the data
@@ -23,7 +26,7 @@ public class TextFrame extends JFrame
       final Container contentPane = this.getContentPane();
       setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 
-      ArrayList<Double> a = dataModel.getData();
+      a = dataModel.getData();
       fieldList = new JTextField[a.size()];
 
       // A listener for action events in the text fields
@@ -66,6 +69,15 @@ public class TextFrame extends JFrame
       setVisible(true);
    }
 
+   ArrayList<Double> a;
    DataModel dataModel;
    JTextField[] fieldList;
+   
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		a = dataModel.getData();
+		for (int i = 0; i < a.size(); i++) {
+			fieldList[i].setText(a.get(i).toString());
+		}
+	}
 }

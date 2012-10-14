@@ -28,5 +28,6 @@ public class ObserverTester
       BarFrame barFrame = new BarFrame(model);
 
       model.attach(barFrame);
+      model.attach(frame);
    }
 }
