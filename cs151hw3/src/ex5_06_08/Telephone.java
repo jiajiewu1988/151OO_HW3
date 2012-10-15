@@ -27,7 +27,11 @@ public class Telephone
       speakerPanel.add(new JLabel("Speaker:"),
          BorderLayout.NORTH);
       speakerField = new JTextArea(10, 25);
-      speakerPanel.add(speakerField,
+      
+      //add a scroll bar to speaker field
+      JScrollPane speakerScroller = new JScrollPane(speakerField);
+      speakerScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+      speakerPanel.add(speakerScroller,
          BorderLayout.CENTER);
 
       String keyLabels = "123456789*0#";
@@ -49,7 +53,11 @@ public class Telephone
       }
 
       final JTextArea microphoneField = new JTextArea(10, 25);
-
+      
+      //Create a JScrollPane For the Microphone field - Jiajie Wu
+      JScrollPane microphoneScroller = new JScrollPane(microphoneField);
+      microphoneScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+      
       JButton speechButton = new JButton("Send speech");
       speechButton.addActionListener(new
          ActionListener()
@@ -79,7 +87,9 @@ public class Telephone
       microphonePanel.setLayout(new BorderLayout());
       microphonePanel.add(new JLabel("Microphone:"),
          BorderLayout.NORTH);
-      microphonePanel.add(microphoneField,
+      
+      //Add the JScrollPane to the BorderLayout - Jiajie Wu
+      microphonePanel.add(microphoneScroller,
          BorderLayout.CENTER);
       microphonePanel.add(buttonPanel,
          BorderLayout.SOUTH);
